@@ -79,7 +79,6 @@ class LinkedList:
                 self.head = None
                 break
             if counter == index - 1:
-                # next element has to be omitted
                 current.next = current.next.next
                 break
             counter += 1
