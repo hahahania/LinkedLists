@@ -61,7 +61,7 @@ class LinkedList:
             counter += 1
             current = current.next
 
-    def deleting_at_index(self, index):
+    def delete_at_index(self, index):
         current = self.head
         counter = 0
         if index == 0:
