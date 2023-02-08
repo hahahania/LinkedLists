@@ -9,7 +9,7 @@ class LinkedList:
         self.head = None
 
     def show_list(self):
-        if self.head == None:
+        if self.head is None:
             print('The list is empty')
 
         current = self.head
@@ -36,7 +36,7 @@ class LinkedList:
 
     def add_at_the_end(self, data):
         # creating node if there aren't any
-        if self.head == None:
+        if self.head is None:
             self.head = Node(data)
             return
 
@@ -51,6 +51,9 @@ class LinkedList:
         current = self.head
         counter = 0
         while current:
+            if index == 0:
+                self.add_at_the_beginning(data)
+                break
             # we have to stop at previous node to add new connection
             # new node is followed current.next
             # we insert new node between current node and the one after it
@@ -65,8 +68,16 @@ class LinkedList:
         current = self.head
         counter = 0
         if index == 0:
-            self.head = self.head.next
+            if self.list_lenght() > 1:
+                self.head = self.head.next
+                return
+            else:
+                self.head = None
+
         while current:
+            if counter == self.list_lenght()-1:
+                self.head = None
+                break
             if counter == index - 1:
                 # next element has to be omitted
                 current.next = current.next.next
@@ -82,5 +93,6 @@ class LinkedList:
 
 if __name__ == '__main__':
     linked_list = LinkedList()
-    linked_list.insert_list([1, 2, 3, 4, 5])
+    linked_list.add_at_the_beginning(1)
+
     linked_list.show_list()
