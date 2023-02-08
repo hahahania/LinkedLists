@@ -84,7 +84,6 @@ class LinkedList:
             counter += 1
             current = current.next
 
-    # adding more than one elements from list
     def insert_list(self, list):
         for element in list:
             self.add_at_the_end(element)
