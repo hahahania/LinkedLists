@@ -86,3 +86,17 @@ class DoubleLinkedList:
     def insert_list(self, list):
         for element in list:
             self.add_at_the_end(element)
+
+    def get(self, index):
+        counter = 0
+        current = self.head
+        while current:
+            if counter == index:
+                return current.data
+            counter += 1
+
+
+if __name__ == '__main__':
+    dll = DoubleLinkedList()
+    dll.insert_list([1, 2, 3, 4])
+    dll.show_list()
