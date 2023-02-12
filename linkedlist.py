@@ -18,7 +18,7 @@ class LinkedList:
         while current:
             linked_list.append(str(current.data))
             current = current.next
-        print('-->'.join(linked_list))
+        return '-->'.join(linked_list)
 
     def list_lenght(self):
         counter = 0
@@ -51,6 +51,10 @@ class LinkedList:
         current = self.head
         counter = 0
         while current:
+            if index > self.list_lenght():
+                print('Given index does not exist, item added at the end of the list')
+                self.add_at_the_end(data)
+                break
             if index == 0:
                 self.add_at_the_beginning(data)
                 break
@@ -88,9 +92,20 @@ class LinkedList:
         for element in list:
             self.add_at_the_end(element)
 
+    def get(self, index):
+        counter = 0
+        current = self.head
+        while current:
+            if counter == index:
+                return current.data
+            if index == -1:
+                if current.next is None:
+                    return current.data
+            counter += 1
+            current = current.next
+
 
 if __name__ == '__main__':
-    linked_list = LinkedList()
-    linked_list.add_at_the_beginning(1)
-
-    linked_list.show_list()
+    ll = LinkedList()
+    ll.insert_list([1, 2, 3, 4])
+    print(ll.show_list())
